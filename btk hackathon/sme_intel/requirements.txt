@@ -1,0 +1,34 @@
+# SME-Intel (KOBİ-Zeka) — Production Dependencies
+# ─────────────────────────────────────────────────
+# Install: pip install -r requirements.txt
+#
+# IMPORTANT: This file is committed to git and is safe to make public.
+# API keys and database credentials MUST NEVER appear here.
+# Store them in Streamlit Cloud Secrets or a local .env file (git-ignored).
+
+# ── Core framework ──────────────────────────────────────────────────────────
+streamlit>=1.35.0
+
+# ── LangChain / LangGraph ───────────────────────────────────────────────────
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-google-genai>=4.0.0          # Google Gemini (google-genai SDK v4+, NO OpenAI)
+langgraph>=0.1.0
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9                 # PostgreSQL driver (production — Neon / Supabase)
+                                       # Binary wheel: no libpq compile step needed on Cloud
+
+# ── Data processing ──────────────────────────────────────────────────────────
+pandas>=2.0.0
+openpyxl>=3.1.0                        # Excel read support (raw data import)
+
+# ── Configuration & validation ───────────────────────────────────────────────
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
+
+# ── Testing (not installed on Cloud — safe to leave, pip skips gracefully) ───
+pytest>=8.0.0
+pytest-mock>=3.12.0
